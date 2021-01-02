@@ -55,8 +55,8 @@
 	}
 	
 	.logo-begin{
-		width: 350rpx;
-		height: 350rpx;
+		width: 150px;
+		height: 150px;
 	}
 
 </style>
