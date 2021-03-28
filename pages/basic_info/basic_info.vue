@@ -7,12 +7,13 @@
 				<text class="header-text" :style="{color:choose_index==2?'#f4f4f4':'#000000'}" @click="jumpToDocLoad">文档导入</text>
 				<text class="header-text" :style="{color:choose_index==3?'#f4f4f4':'#000000'}" @click="jumpToChoseTemplate">选择模板</text>
 			</view>
-			<text @click="jumpToStruct">跳转到结构</text>
+
 		</view>
-		
 		<view class="table" :style="{display:choose_index==1?'flex':'none'}">
+			<text class="input-placeholder" style="margin: 15rpx;color: #000000;">输入基本信息</text>
+			<view class="horizontal"></view>
 			<view class="table-item">
-				<input class="input" placeholder="展示标题" placeholder-class="input-placeholder" />
+				<input class="input"  placeholder="展示标题" placeholder-class="input-placeholder" />
 			</view>
 			<view class="horizontal"></view>
 			<view class="table-item">
@@ -23,6 +24,8 @@
 				<input class="input" placeholder="生成页数" placeholder-class="input-placeholder" />
 			</view>
 			<view class="horizontal"></view>
+			<text class="input-placeholder" style="margin: 15rpx;color: #000000;">选择您要插入的图片</text>
+
 				<view class="uni-uploader__files">
 					<block v-for="(image,index) in imageList" :key="index">
 						<view class="uni-uploader__file">
@@ -36,7 +39,14 @@
 			<view class="horizontal"></view>
 			
 		</view>
-		
+		<view class="table" :style="{display:choose_index==2?'flex':'none'}">
+			<text class="input-placeholder" style="margin: 15rpx;margin-bottom: 0rpx;color: #000000;">选择制作PPT依据的文本</text>
+			<text class="input-placeholder" style="margin-left: 15rpx;color: #bcbcbc;font-size: 50%;">当前版本只支持txt格式</text>
+			<view class="horizontal"></view>
+			<view class="image-area">
+				<image class="load-file" :src="loadFileFlag==false?'../../static/plus.png':'../../static/plus_selected.png'" @click="loadFile"></image>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -55,9 +65,11 @@
 	export default {
 		data() {
 			return {
+				loadFileFlag:false,
 				choose_index:1,
 				title: 'choose/previewImage',
 				imageList: [],
+				fileList:[],
 				sourceTypeIndex: 2,
 				sourceType: ['拍照', '相册', '拍照或相册'],
 				sizeTypeIndex: 2,
@@ -69,6 +81,7 @@
 		},
 		onUnload() {
 			this.imageList = [],
+			this.fileList=[],
 				this.sourceTypeIndex = 2,
 				this.sourceType = ['拍照', '相册', '拍照或相册'],
 				this.sizeTypeIndex = 2,
@@ -76,23 +89,41 @@
 				this.countIndex = 8;
 		},
 		methods: {
+			loadFile(){
+				this.fileList=[];
+				uni.chooseFile({
+					extension:['.txt'],
+					success: (res) => {
+						this.fileList = this.fileList.concat(res.tempFilePaths);
+						if(this.fileList.length!=1){
+							uni.showToast({
+								icon:"none",
+								title:"请只选择一个txt文件！"
+							})
+							this.fileList=[];
+						}
+						else{
+							uni.showToast({
+								icon:"success",
+								title:"您已选择：  "+res.tempFiles[0].name
+							});
+							this.loadFileFlag=true;
+						}
+					},
+					});
+			},
 			jumpToBasicInfo(){
-				
+				this.choose_index=1;
 			},
 			
 			jumpToDocLoad(){
-				
+				this.choose_index=2;
 			},
 			
 			jumpToChoseTemplate(){
-				
+				this.choose_index=3;
 			},
 			
-			jumpToStruct(){
-				uni.navigateTo({
-					url:"../page_struct/page_struct"
-				})
-			},
 			chooseImage: async function() {
 			
 				if (this.imageList.length === 9) {
@@ -146,8 +177,8 @@
 		display: flex;
 		flex-direction: column;
 		position: absolute;
-		width: 100%;
-		height: 100%;
+		width: 524px;
+		height: 700px;
 }
 	
 	.info-header{
@@ -218,6 +249,7 @@
 	}
 	
 	.horizontal {  
+		display: flex;
 	    width: 100%;  
 	    height: 2rpx;  
 	    background-color: #B3B0B3;  
@@ -278,5 +310,19 @@
 	  	width: 100%;
 	  	height: 100%;
 	  	opacity: 0;
+	  }
+	  
+	  .load-file{
+		  width: 300rpx;
+		  height: 300rpx;
+	  }
+	  
+	  .image-area{
+		  position: relative;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		  width: 100%;
+		  height: 100%;
 	  }
 </style>
