@@ -1,9 +1,6 @@
 <template>
-	<view class="content">
-		<text class="logo-font">Auto PPT</text>
-		<view class="image-area">
-			<image class="logo-begin" src="../../static/logo/transparent.png" @tap="begin"></image>
-		</view>
+	<view>
+		<view class="horizontal"></view>
 	</view>
 </template>
 
@@ -11,18 +8,11 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'refresh'
 			}
-		},
-		onLoad() {
-
 		},
 		methods: {
-			begin(){
-				uni.navigateTo({
-					url:"../basic_info/basic_info"
-				})
-			}
+			
 		}
 	}
 </script>
@@ -33,7 +23,7 @@
 		position: absolute;
 		flex-direction: column;
 		align-items: center;
-		background-color: #3fd5d5;
+		background-color: #ffffff;
 		height: 100%;
 		width: 100%;
 	}
@@ -41,7 +31,7 @@
 	.logo-font{
 		display: block;
 		font-size: 400%;
-		color: #4bffff;
+		color: #ffffff;
 	}
 	
 	.image-area{
@@ -57,6 +47,23 @@
 	.logo-begin{
 		width: 150px;
 		height: 150px;
+	}
+	
+	.image-area{
+			  position: relative;
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			  width: 50%;
+			  height: 50%;
+	}
+	.info-header{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: #ffffff;
+		height: 15%;
+		width: 15%;
 	}
 
 </style>

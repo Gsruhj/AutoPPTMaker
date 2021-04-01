@@ -39,12 +39,59 @@
 			<view class="horizontal"></view>
 			
 		</view>
+		
 		<view class="table" :style="{display:choose_index==2?'flex':'none'}">
 			<text class="input-placeholder" style="margin: 15rpx;margin-bottom: 0rpx;color: #000000;">选择制作PPT依据的文本</text>
 			<text class="input-placeholder" style="margin-left: 15rpx;color: #bcbcbc;font-size: 50%;">当前版本只支持txt格式</text>
 			<view class="horizontal"></view>
 			<view class="image-area">
 				<image class="load-file" :src="loadFileFlag==false?'../../static/plus.png':'../../static/plus_selected.png'" @click="loadFile"></image>
+			</view>
+		</view>
+		
+		<view class="table" :style="{display:choose_index==3?'flex':'none'}">
+			<text class="input-placeholder" style="margin: 15rpx;margin-bottom: 0rpx;color: #000000;">选择制作PPT所用的模板</text>
+			<view class="horizontal"></view>
+			<view>
+				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
+					@scroll="scroll">
+					<view class="uni-title uni-common-pl">模板1</view>
+					<view class="template-image-area">
+						<image class="template_size" src="../../static/template/鼠.png"></image>
+					</view>
+					<view class="horizontal"></view>
+					<view class="uni-title uni-common-pl">模板2</view>
+					<view class="template-image-area">
+						<image class="template_size" src="../../static/template/牛.png"></image>
+					</view>
+					<view class="horizontal"></view>
+					<view class="uni-title uni-common-pl">模板3</view>
+					<view class="template-image-area">
+						<image class="template_size" src="../../static/template/虎.png"></image>
+					</view>
+					<view class="horizontal"></view>
+					<view class="uni-title uni-common-pl">模板4</view>
+					<view class="template-image-area">
+						<image class="template_size" src="../../static/template/兔.png"></image>
+					</view>
+				</scroll-view>
+			</view>
+
+			<view class="uni-list">
+				<view class="uni-list-cell">
+					<view class="uni-list-cell-left">
+						当前选择
+					</view>
+					<view class="uni-list-cell-db">
+						<picker @change="bindPickerChange" :value="index" :range="array">
+							<view class="uni-input">{{array[index]}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
+
+			<view>
+				<button size="default" @tap="submitted">确定</button>
 			</view>
 		</view>
 	</view>
@@ -75,8 +122,16 @@
 				sizeTypeIndex: 2,
 				sizeType: ['压缩', '原图', '压缩或原图'],
 				countIndex: 8,
-				count: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+				count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
 				
+				
+				scrollTop: 0,
+				old: {
+					scrollTop: 0
+				},
+				
+				array: ['模板1', '模板2', '模板3', '模板4'],
+				index: 0
 			}
 		},
 		onUnload() {
@@ -89,6 +144,29 @@
 				this.countIndex = 8;
 		},
 		methods: {
+			upper: function(e) {
+				console.log(e)
+			},
+			lower: function(e) {
+				console.log(e)
+			},
+			scroll: function(e) {
+				console.log(e)
+				this.old.scrollTop = e.detail.scrollTop
+			},
+			
+			bindPickerChange: function(e) {
+				console.log('picker发送选择改变，携带值为', e.target.value)
+				this.index = e.target.value
+			},
+			
+			submitted(){
+				uni.navigateTo({
+					url:"../refresh/refresh"
+				})
+			},
+			
+			
 			loadFile(){
 				this.fileList=[];
 				uni.chooseFile({
@@ -110,7 +188,7 @@
 							this.loadFileFlag=true;
 						}
 					},
-					});
+				});
 			},
 			jumpToBasicInfo(){
 				this.choose_index=1;
@@ -179,7 +257,7 @@
 		position: absolute;
 		width: 524px;
 		height: 700px;
-}
+	}
 	
 	.info-header{
 		display: flex;
@@ -325,4 +403,54 @@
 		  width: 100%;
 		  height: 100%;
 	  }
+	  
+	.scroll-Y {
+	    height: 1000rpx;
+	}
+	  
+	.template_size{
+	 	width: 300rpx;
+	  	height: 300rpx;
+	}
+	  
+	.uni-input {
+	  	height: 50rpx;
+	  	padding: 15rpx 25rpx;
+	  	line-height:50rpx;
+	  	font-size:28rpx;
+	  	background:#FFF;
+	  	flex: 1;
+	}
+	.uni-list {
+	  	background-color: #FFFFFF;
+	  	position: relative;
+	  	width: 100%;
+	  	display: flex;
+	  	flex-direction: column;
+	}
+	.uni-list-cell {
+	  	position: relative;
+	  	display: flex;
+		flex-direction: row;
+	  	justify-content: space-between;
+	  	align-items: center;
+	}
+	.uni-list-cell-left {
+	    white-space: nowrap;
+	  	font-size:28rpx;
+	  	padding: 0 30rpx;
+	}
+	.uni-list-cell-db{
+		flex: 1;
+	}
+	
+	.template-image-area{
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 50%;
+	}
+	  
 </style>

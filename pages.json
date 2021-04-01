@@ -24,6 +24,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/refresh/refresh",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
