@@ -1,6 +1,8 @@
 <template>
-	<view>
-		<view class="horizontal"></view>
+	<view class="content">
+		<view :animation="animationData" class="image-area">
+			<image src="../../static/refresh.png"></image>
+		</view>
 	</view>
 </template>
 
@@ -8,11 +10,30 @@
 	export default {
 		data() {
 			return {
-				title: 'refresh'
+				title: 'refresh',
+				animationData: {}
 			}
 		},
+		
+		onShow: function(){
+		    var animation = uni.createAnimation({
+				duration: 1000,
+				timingFunction: 'ease',
+		    })
+		    this.animation = animation
+		    animation.rotateZ(180).step()
+		    this.animationData = animation.export()
+		    setTimeout(function() {
+				animation.translate(30).step()
+				this.animationData = animation.export()
+		    }.bind(this), 1000)
+		},
 		methods: {
-			
+			rotateAndScale: function () {
+				// 旋转并导出动画数据
+				this.animation.rotateZ(180).step()
+				this.animationData = this.animation.export()
+			},
 		}
 	}
 </script>
@@ -47,23 +68,6 @@
 	.logo-begin{
 		width: 150px;
 		height: 150px;
-	}
-	
-	.image-area{
-			  position: relative;
-			  display: flex;
-			  align-items: center;
-			  justify-content: center;
-			  width: 50%;
-			  height: 50%;
-	}
-	.info-header{
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		background-color: #ffffff;
-		height: 15%;
-		width: 15%;
 	}
 
 </style>

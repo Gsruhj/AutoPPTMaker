@@ -282,7 +282,6 @@
 		justify-content: center;
 		height: 100%;
 		width: 100%;
-		
 	}
 	
 	.header-text{
@@ -331,32 +330,31 @@
 	    width: 100%;  
 	    height: 2rpx;  
 	    background-color: #B3B0B3;  
-	  } 
-	  .uni-uploader__files {
-	  	display: flex;
-	  	flex-direction: row;
-
-	  }
-	  .uni-uploader__file {
+	} 
+	.uni-uploader__files {
+		display: flex;
+		flex-direction: row;
+	}
+	.uni-uploader__file {
 	  	margin: 10rpx;
 	  	width: 210rpx;
 	  	height: 210rpx;
-	  }
-	  .uni-uploader__img {
+	}
+	.uni-uploader__img {
 	  	display: block;
 	  	width: 210rpx;
 	  	height: 210rpx;
-	  }
+	}
 	  
-	  .uni-uploader__input-box {
+	.uni-uploader__input-box {
 	  	position: relative;
 	  	margin:10rpx;
 	  	width: 208rpx;
 	  	height: 208rpx;
 	  	border: 2rpx solid #D9D9D9;
-	  }
-	  .uni-uploader__input-box:before,
-	  .uni-uploader__input-box:after {
+	}
+	.uni-uploader__input-box:before,
+	.uni-uploader__input-box:after {
 	  	content: " ";
 	  	position: absolute;
 	  	top: 50%;
@@ -364,23 +362,23 @@
 	  	-webkit-transform: translate(-50%, -50%);
 	  	transform: translate(-50%, -50%);
 	  	background-color: #D9D9D9;
-	  }
-	  .uni-uploader__input-box:before {
+	}
+	.uni-uploader__input-box:before {
 	  	width: 4rpx;
 	  	height: 79rpx;
-	  }
-	  .uni-uploader__input-box:after {
+	}
+	.uni-uploader__input-box:after {
 	  	width: 79rpx;
 	  	height: 4rpx;
-	  }
-	  .uni-uploader__input-box:active {
+	}
+	.uni-uploader__input-box:active {
 	  	border-color: #999999;
-	  }
-	  .uni-uploader__input-box:active:before,
-	  .uni-uploader__input-box:active:after {
+	}
+	.uni-uploader__input-box:active:before,
+	.uni-uploader__input-box:active:after {
 	  	background-color: #999999;
-	  }
-	  .uni-uploader__input {
+	}
+	.uni-uploader__input {
 	  	position: absolute;
 	  	z-index: 1;
 	  	top: 0;
@@ -388,21 +386,21 @@
 	  	width: 100%;
 	  	height: 100%;
 	  	opacity: 0;
-	  }
+	}
 	  
-	  .load-file{
-		  width: 300rpx;
-		  height: 300rpx;
-	  }
+	.load-file{
+		width: 300rpx;
+		height: 300rpx;
+	}
 	  
-	  .image-area{
-		  position: relative;
-		  display: flex;
-		  align-items: center;
-		  justify-content: center;
-		  width: 100%;
-		  height: 100%;
-	  }
+	.image-area{
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+	}
 	  
 	.scroll-Y {
 	    height: 1000rpx;
