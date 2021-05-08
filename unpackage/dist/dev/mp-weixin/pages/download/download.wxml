@@ -1,0 +1,1 @@
+<view class="content"><view class="table"><text class="input-placeholder" style="margin:15rpx;margin-bottom:0rpx;color:#000000;">根据自然语言处理生成的PPT</text><view class="horizontal"></view><view class="image-area"><image class="download-file" src="../../static/download.png" data-event-opts="{{[['tap',[['downloadFile',['$event']]]]]}}" bindtap="__e"></image></view></view></view>

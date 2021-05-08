@@ -255,8 +255,8 @@
 		display: flex;
 		flex-direction: column;
 		position: absolute;
-		width: 524px;
-		height: 700px;
+		width: 100%;
+		height: 100%;
 	}
 	
 	.info-header{
@@ -403,7 +403,7 @@
 	}
 	  
 	.scroll-Y {
-	    height: 1000rpx;
+	    height: 750rpx;
 	}
 	  
 	.template_size{
@@ -450,5 +450,4 @@
 		width: 100%;
 		height: 50%;
 	}
-	  
 </style>

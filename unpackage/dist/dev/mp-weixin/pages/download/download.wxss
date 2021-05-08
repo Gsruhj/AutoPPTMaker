@@ -1,0 +1,55 @@
+
+.content{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	position: absolute;
+	width: 524px;
+	height: 700px;
+}
+.horizontal {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+    width: 100%;  
+    height: 2rpx;  
+    background-color: #B3B0B3;
+}
+.table{
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: #f1f1f1;
+}
+.input-placeholder{
+	color: #bcbcbc;
+	font-size: 125%;
+}
+.image-area{
+		  position: relative;
+		  display: -webkit-box;
+		  display: -webkit-flex;
+		  display: flex;
+		  -webkit-box-align: center;
+		  -webkit-align-items: center;
+		          align-items: center;
+		  -webkit-box-pack: center;
+		  -webkit-justify-content: center;
+		          justify-content: center;
+		  width: 100%;
+		  height: 30%;
+}
+.download-file{
+		  width: 500rpx;
+		  height: 500rpx;
+}
+
+

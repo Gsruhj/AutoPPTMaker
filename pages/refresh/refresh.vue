@@ -1,8 +1,14 @@
 <template>
 	<view class="content">
-		<view :animation="animationData" class="image-area">
-			<image src="../../static/refresh.png"></image>
-		</view>
+        <view class="uni-padding-wrap uni-common-mt">
+            <view class="progress-box">
+                <progress :percent="pgList[0]" show-info activeColor="#10AEFF" stroke-width="3" />
+            </view>
+            <view class="progress-control">
+                <button type="primary" @click="setProgress">设置进度</button>
+                <button type="warn" @click="clearProgress">清除进度</button>
+            </view>
+        </view>
 	</view>
 </template>
 
@@ -11,31 +17,19 @@
 		data() {
 			return {
 				title: 'refresh',
-				animationData: {}
+				pgList: [ 0]
 			}
 		},
-		
-		onShow: function(){
-		    var animation = uni.createAnimation({
-				duration: 1000,
-				timingFunction: 'ease',
-		    })
-		    this.animation = animation
-		    animation.rotateZ(180).step()
-		    this.animationData = animation.export()
-		    setTimeout(function() {
-				animation.translate(30).step()
-				this.animationData = animation.export()
-		    }.bind(this), 1000)
-		},
 		methods: {
-			rotateAndScale: function () {
-				// 旋转并导出动画数据
-				this.animation.rotateZ(180).step()
-				this.animationData = this.animation.export()
-			},
+	        setProgress() {
+	            this.pgList = [60]
+	        },
+	        clearProgress() {
+	            this.pgList = [0]
+	        }
 		}
 	}
+	
 </script>
 
 <style>
@@ -49,25 +43,27 @@
 		width: 100%;
 	}
 	
-	.logo-font{
-		display: block;
-		font-size: 400%;
-		color: #ffffff;
-	}
+    .progress-box {
+        height: 50rpx;
+        margin-bottom: 60rpx;
+    }
+    .uni-icon {
+        line-height: 1.5;
+    }
+    .progress-cancel {
+        margin-left: 40rpx;
+    }
+    
+    .progress-control button{
+        margin-top: 20rpx;
+    }
 	
-	.image-area{
-		display: flex;
-		flex-direction: row;
-		position: relative;
-		height: 100%;
-		width: 100%;
-		align-items: center;
-		justify-content: center;
+	.uni-padding-wrap{
+		/* width:690rpx; */
+		padding:0 30rpx;
 	}
-	
-	.logo-begin{
-		width: 150px;
-		height: 150px;
+	.uni-common-mt{
+		margin-top:300rpx;
 	}
 
 </style>

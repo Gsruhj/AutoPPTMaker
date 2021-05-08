@@ -1,0 +1,1 @@
+<view class="content"><text class="logo-font">Auto PPT</text><view class="image-area"><image class="logo-begin" src="../../static/logo/transparent.png" data-event-opts="{{[['tap',[['begin',['$event']]]]]}}" bindtap="__e"></image></view></view>
