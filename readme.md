@@ -5,4 +5,12 @@
 - uni-app==3.1.12.20210428
 - Django== 
 
+
+
+## 使用插件
+
+-  附件选择上传下载APP-H5-小程序  [https://ext.dcloud.net.cn/plugin?id=1015](https://ext.dcloud.net.cn/plugin?id=1015)
+
+
+
 ## 小程序链接

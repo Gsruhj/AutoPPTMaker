@@ -59,41 +59,23 @@
 			<view>
 				<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 					@scroll="scroll">
-					<view class="uni-title uni-common-pl">模板1</view>
-					<view class="template-image-area">
-						<image class="template_size" src="../../static/template/鼠.png"></image>
+					<view class="uni-list">
+					    <radio-group @change="radioChange">
+					        <label class="uni-list-cell uni-list-cell-pd" v-for="(item, index) in items" :key="item.value">
+					            <view>
+					                <radio :value="item.value" :checked="index === current" />
+					            </view>
+					            <view>{{item.name}}</view>
+								<view class="template-image-area">
+									<image class="template_size" src="/static/template/模板1.png"></image>
+									
+								</view>
+					        </label>
+					    </radio-group>
 					</view>
-					<view class="horizontal"></view>
-					<view class="uni-title uni-common-pl">模板2</view>
-					<view class="template-image-area">
-						<image class="template_size" src="../../static/template/牛.png"></image>
-					</view>
-					<view class="horizontal"></view>
-					<view class="uni-title uni-common-pl">模板3</view>
-					<view class="template-image-area">
-						<image class="template_size" src="../../static/template/虎.png"></image>
-					</view>
-					<view class="horizontal"></view>
-					<view class="uni-title uni-common-pl">模板4</view>
-					<view class="template-image-area">
-						<image class="template_size" src="../../static/template/兔.png"></image>
-					</view>
+					
 				</scroll-view>
 			</view>
-
-			<view class="uni-list">
-				<view class="uni-list-cell">
-					<view class="uni-list-cell-left">
-						当前选择
-					</view>
-					<view class="uni-list-cell-db">
-						<picker @change="bindPickerChange" :value="index" :range="array">
-							<view class="uni-input">{{array[index]}}</view>
-						</picker>
-					</view>
-				</view>
-			</view>
-
 			<view>
 				<button size="default" @tap="submitted">确定</button>
 			</view>
@@ -136,9 +118,29 @@
 				old: {
 					scrollTop: 0
 				},
+			
+				index: 0,
 				
-				array: ['模板1', '模板2', '模板3', '模板4'],
-				index: 0
+				
+				items: [{
+				        value: '模板1',
+				        name: '模板1'
+				    },
+				    {
+				        value: '模板2',
+				        name: '模板2',
+				        checked: 'true'
+				    },
+				    {
+				        value: '模板3',
+				        name: '模板3'
+				    },
+					{
+					    value: '模板4',
+					    name: '模板4'
+					},
+				],
+				current: 0
 			}
 		},
 		onUnload() {
@@ -231,6 +233,19 @@
 			
 			jumpToChoseTemplate(){
 				this.choose_index=3;
+				onShow();
+			},
+			onShow(){
+				//alert('触发了！')
+			},
+			
+			radioChange: function(evt) {
+			    for (let i = 0; i < this.items.length; i++) {
+			        if (this.items[i].value === evt.target.value) {
+			            this.current = i;
+			            break;
+			        }
+			    }
 			},
 			
 			chooseImage: async function() {
@@ -434,12 +449,12 @@
 	}
 	  
 	.scroll-Y {
-	    height: 750rpx;
+	    height: 100%;
 	}
 	  
 	.template_size{
-	 	width: 300rpx;
-	  	height: 300rpx;
+	 	width: 350rpx;
+	  	height: 350rpx;
 	}
 	  
 	.uni-input {
@@ -471,6 +486,9 @@
 	}
 	.uni-list-cell-db{
 		flex: 1;
+	}
+	.uni-list-cell-pd {
+		padding: 22rpx 30rpx;
 	}
 	
 	.template-image-area{
