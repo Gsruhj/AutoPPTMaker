@@ -1526,7 +1526,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../installed_software/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.content{\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\tposition: absolute;\n\twidth: 524px;\n\theight: 700px;\n}\n.info-header{\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\tbackground-color: #3fd5d5;\n\theight: 15%;\n\twidth: 100%;\n}\n.header-logo{\n\tdisplay: block;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n\tfont-size: 100%;\n\tcolor: #4bffff;\n}\n.header-text-area{\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: end;\n\t-webkit-align-items: flex-end;\n\t        align-items: flex-end;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n\theight: 100%;\n\twidth: 100%;\n}\n.header-text{\n\tmargin-left: 25rpx;\n\tmargin-bottom: 15rpx;\n\tfont-weight: 400;\n\tfont-size: 150%;\n}\n.header-text-selected{\n\tcolor: #e6e6e6;\n\tmargin-left: 25rpx;\n\tmargin-bottom: 15rpx;\n\tfont-weight: 200;\n\tfont-size: 150%;\n\ttext-decoration:underline;\n}\n.table{\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tbackground-color: #f1f1f1;\n}\n.table-item{\n\tmargin-top: 15rpx;\n}\n.input{\n\tmargin-left: 15rpx;\n\theight: 100rpx;\n\tmargin-top: 50rpx;\n\tmargin-bottom: -20rpx;\n}\n.input-placeholder{\n\tcolor: #bcbcbc;\n\tfont-size: 125%;\n}\n.horizontal {  \n\tdisplay: -webkit-box;  \n\tdisplay: -webkit-flex;  \n\tdisplay: flex;\n    width: 100%;  \n    height: 2rpx;  \n    background-color: #B3B0B3;\n}\n.uni-uploader__files {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n}\n.uni-uploader__file {\n  \tmargin: 10rpx;\n  \twidth: 210rpx;\n  \theight: 210rpx;\n}\n.uni-uploader__img {\n  \tdisplay: block;\n  \twidth: 210rpx;\n  \theight: 210rpx;\n}\n.uni-uploader__input-box {\n  \tposition: relative;\n  \tmargin:10rpx;\n  \twidth: 208rpx;\n  \theight: 208rpx;\n  \tborder: 2rpx solid #D9D9D9;\n}\n.uni-uploader__input-box:before,\n.uni-uploader__input-box:after {\n  \tcontent: \" \";\n  \tposition: absolute;\n  \ttop: 50%;\n  \tleft: 50%;\n  \t-webkit-transform: translate(-50%, -50%);\n  \ttransform: translate(-50%, -50%);\n  \tbackground-color: #D9D9D9;\n}\n.uni-uploader__input-box:before {\n  \twidth: 4rpx;\n  \theight: 79rpx;\n}\n.uni-uploader__input-box:after {\n  \twidth: 79rpx;\n  \theight: 4rpx;\n}\n.uni-uploader__input-box:active {\n  \tborder-color: #999999;\n}\n.uni-uploader__input-box:active:before,\n.uni-uploader__input-box:active:after {\n  \tbackground-color: #999999;\n}\n.uni-uploader__input {\n  \tposition: absolute;\n  \tz-index: 1;\n  \ttop: 0;\n  \tleft: 0;\n  \twidth: 100%;\n  \theight: 100%;\n  \topacity: 0;\n}\n.load-file{\n\twidth: 300rpx;\n\theight: 300rpx;\n}\n.image-area{\n\tposition: relative;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n\twidth: 100%;\n\theight: 100%;\n}\n.scroll-Y {\n    height: 1000rpx;\n}\n.template_size{\n \twidth: 300rpx;\n  \theight: 300rpx;\n}\n.uni-input {\n  \theight: 50rpx;\n  \tpadding: 15rpx 25rpx;\n  \tline-height:50rpx;\n  \tfont-size:28rpx;\n  \tbackground:#FFF;\n  \t-webkit-box-flex: 1;\n  \t-webkit-flex: 1;\n  \t        flex: 1;\n}\n.uni-list {\n  \tbackground-color: #FFFFFF;\n  \tposition: relative;\n  \twidth: 100%;\n  \tdisplay: -webkit-box;\n  \tdisplay: -webkit-flex;\n  \tdisplay: flex;\n  \t-webkit-box-orient: vertical;\n  \t-webkit-box-direction: normal;\n  \t-webkit-flex-direction: column;\n  \t        flex-direction: column;\n}\n.uni-list-cell {\n  \tposition: relative;\n  \tdisplay: -webkit-box;\n  \tdisplay: -webkit-flex;\n  \tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n  \t-webkit-box-pack: justify;\n  \t-webkit-justify-content: space-between;\n  \t        justify-content: space-between;\n  \t-webkit-box-align: center;\n  \t-webkit-align-items: center;\n  \t        align-items: center;\n}\n.uni-list-cell-left {\n    white-space: nowrap;\n  \tfont-size:28rpx;\n  \tpadding: 0 30rpx;\n}\n.uni-list-cell-db{\n\t-webkit-box-flex: 1;\n\t-webkit-flex: 1;\n\t        flex: 1;\n}\n.template-image-area{\n\tposition: relative;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n\twidth: 100%;\n\theight: 50%;\n}\n  \n", ""]);
+exports.push([module.i, "\n.content{\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\tposition: absolute;\n\twidth: 100%;\n\theight: 100%;\n}\n.info-header{\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\tbackground-color: #3fd5d5;\n\theight: 15%;\n\twidth: 100%;\n}\n.header-logo{\n\tdisplay: block;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n\tfont-size: 100%;\n\tcolor: #4bffff;\n}\n.header-text-area{\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-align: end;\n\t-webkit-align-items: flex-end;\n\t        align-items: flex-end;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n\theight: 100%;\n\twidth: 100%;\n}\n.header-text{\n\tmargin-left: 25rpx;\n\tmargin-bottom: 15rpx;\n\tfont-weight: 400;\n\tfont-size: 150%;\n}\n.header-text-selected{\n\tcolor: #e6e6e6;\n\tmargin-left: 25rpx;\n\tmargin-bottom: 15rpx;\n\tfont-weight: 200;\n\tfont-size: 150%;\n\ttext-decoration:underline;\n}\n.table{\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tbackground-color: #f1f1f1;\n}\n.table-item{\n\tmargin-top: 15rpx;\n}\n.input{\n\tmargin-left: 15rpx;\n\theight: 100rpx;\n\tmargin-top: 50rpx;\n\tmargin-bottom: -20rpx;\n}\n.input-placeholder{\n\tcolor: #bcbcbc;\n\tfont-size: 125%;\n}\n.horizontal {  \n\tdisplay: -webkit-box;  \n\tdisplay: -webkit-flex;  \n\tdisplay: flex;\n    width: 100%;  \n    height: 2rpx;  \n    background-color: #B3B0B3;\n}\n.uni-uploader__files {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n}\n.uni-uploader__file {\n  \tmargin: 10rpx;\n  \twidth: 210rpx;\n  \theight: 210rpx;\n}\n.uni-uploader__img {\n  \tdisplay: block;\n  \twidth: 210rpx;\n  \theight: 210rpx;\n}\n.uni-uploader__input-box {\n  \tposition: relative;\n  \tmargin:10rpx;\n  \twidth: 208rpx;\n  \theight: 208rpx;\n  \tborder: 2rpx solid #D9D9D9;\n}\n.uni-uploader__input-box:before,\n.uni-uploader__input-box:after {\n  \tcontent: \" \";\n  \tposition: absolute;\n  \ttop: 50%;\n  \tleft: 50%;\n  \t-webkit-transform: translate(-50%, -50%);\n  \ttransform: translate(-50%, -50%);\n  \tbackground-color: #D9D9D9;\n}\n.uni-uploader__input-box:before {\n  \twidth: 4rpx;\n  \theight: 79rpx;\n}\n.uni-uploader__input-box:after {\n  \twidth: 79rpx;\n  \theight: 4rpx;\n}\n.uni-uploader__input-box:active {\n  \tborder-color: #999999;\n}\n.uni-uploader__input-box:active:before,\n.uni-uploader__input-box:active:after {\n  \tbackground-color: #999999;\n}\n.uni-uploader__input {\n  \tposition: absolute;\n  \tz-index: 1;\n  \ttop: 0;\n  \tleft: 0;\n  \twidth: 100%;\n  \theight: 100%;\n  \topacity: 0;\n}\n.load-file{\n\twidth: 300rpx;\n\theight: 300rpx;\n}\n.image-area{\n\tposition: relative;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n\twidth: 100%;\n\theight: 100%;\n}\n.scroll-Y {\n    height: 750rpx;\n}\n.template_size{\n \twidth: 300rpx;\n  \theight: 300rpx;\n}\n.uni-input {\n  \theight: 50rpx;\n  \tpadding: 15rpx 25rpx;\n  \tline-height:50rpx;\n  \tfont-size:28rpx;\n  \tbackground:#FFF;\n  \t-webkit-box-flex: 1;\n  \t-webkit-flex: 1;\n  \t        flex: 1;\n}\n.uni-list {\n  \tbackground-color: #FFFFFF;\n  \tposition: relative;\n  \twidth: 100%;\n  \tdisplay: -webkit-box;\n  \tdisplay: -webkit-flex;\n  \tdisplay: flex;\n  \t-webkit-box-orient: vertical;\n  \t-webkit-box-direction: normal;\n  \t-webkit-flex-direction: column;\n  \t        flex-direction: column;\n}\n.uni-list-cell {\n  \tposition: relative;\n  \tdisplay: -webkit-box;\n  \tdisplay: -webkit-flex;\n  \tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n  \t-webkit-box-pack: justify;\n  \t-webkit-justify-content: space-between;\n  \t        justify-content: space-between;\n  \t-webkit-box-align: center;\n  \t-webkit-align-items: center;\n  \t        align-items: center;\n}\n.uni-list-cell-left {\n    white-space: nowrap;\n  \tfont-size:28rpx;\n  \tpadding: 0 30rpx;\n}\n.uni-list-cell-db{\n\t-webkit-box-flex: 1;\n\t-webkit-flex: 1;\n\t        flex: 1;\n}\n.template-image-area{\n\tposition: relative;\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n\twidth: 100%;\n\theight: 50%;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -1810,11 +1810,56 @@ var render = function() {
     [
       _c(
         "v-uni-view",
-        {
-          staticClass: _vm._$g(1, "sc"),
-          attrs: { animation: _vm._$g(1, "a-animation"), _i: 1 }
-        },
-        [_c("v-uni-image", { attrs: { src: _vm._$g(2, "a-src"), _i: 2 } })],
+        { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
+        [
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+            [
+              _c("v-uni-progress", {
+                attrs: {
+                  percent: _vm._$g(3, "a-percent"),
+                  "show-info": true,
+                  activeColor: "#10AEFF",
+                  "stroke-width": "3",
+                  _i: 3
+                }
+              })
+            ],
+            1
+          ),
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
+            [
+              _c(
+                "v-uni-button",
+                {
+                  attrs: { type: "primary", _i: 5 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [_vm._v("设置进度")]
+              ),
+              _c(
+                "v-uni-button",
+                {
+                  attrs: { type: "warn", _i: 6 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [_vm._v("清除进度")]
+              )
+            ],
+            1
+          )
+        ],
         1
       )
     ],
@@ -1909,7 +1954,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../installed_software/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.content {\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\tposition: absolute;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: column;\n\t        flex-direction: column;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\tbackground-color: #ffffff;\n\theight: 100%;\n\twidth: 100%;\n}\n.logo-font{\n\tdisplay: block;\n\tfont-size: 400%;\n\tcolor: #ffffff;\n}\n.image-area{\n\tdisplay: -webkit-box;\n\tdisplay: -webkit-flex;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t-webkit-flex-direction: row;\n\t        flex-direction: row;\n\tposition: relative;\n\theight: 100%;\n\twidth: 100%;\n\t-webkit-box-align: center;\n\t-webkit-align-items: center;\n\t        align-items: center;\n\t-webkit-box-pack: center;\n\t-webkit-justify-content: center;\n\t        justify-content: center;\n}\n.logo-begin{\n\twidth: 150px;\n\theight: 150px;\n}\n\n", ""]);
+exports.push([module.i, "\n.content {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -webkit-flex;\n\t\tdisplay: flex;\n\t\tposition: absolute;\n\t\t-webkit-box-orient: vertical;\n\t\t-webkit-box-direction: normal;\n\t\t-webkit-flex-direction: column;\n\t\t        flex-direction: column;\n\t\t-webkit-box-align: center;\n\t\t-webkit-align-items: center;\n\t\t        align-items: center;\n\t\tbackground-color: #ffffff;\n\t\theight: 100%;\n\t\twidth: 100%;\n}\n.progress-box {\n        height: 50rpx;\n        margin-bottom: 60rpx;\n}\n.uni-icon {\n        line-height: 1.5;\n}\n.progress-cancel {\n        margin-left: 40rpx;\n}\n.progress-control uni-button{\n        margin-top: 20rpx;\n}\n.uni-padding-wrap{\n\t\t/* width:690rpx; */\n\t\tpadding:0 30rpx;\n}\n.uni-common-mt{\n\t\tmargin-top:300rpx;\n}\n\n", ""]);
 // Exports
 module.exports = exports;
 

@@ -44,8 +44,12 @@
 			<text class="input-placeholder" style="margin: 15rpx;margin-bottom: 0rpx;color: #000000;">选择制作PPT依据的文本</text>
 			<text class="input-placeholder" style="margin-left: 15rpx;color: #bcbcbc;font-size: 50%;">当前版本只支持txt格式</text>
 			<view class="horizontal"></view>
-			<view class="image-area">
-				<image class="load-file" :src="loadFileFlag==false?'../../static/plus.png':'../../static/plus_selected.png'" @click="loadFile"></image>
+
+			<l-file ref="lFile" @up-success="onSuccess"></l-file>
+			<view class="padding text-center">
+				<view class="padding">
+					<button @tap="onUpload">上传</button>
+				</view>
 			</view>
 		</view>
 		
@@ -109,10 +113,13 @@
 		['compressed', 'original']
 	]
 	
+	import lFile from '@../../uni_modules/l-file/components/l-file/l-file.vue'
+	
 	export default {
+		components:{lFile},
 		data() {
 			return {
-				loadFileFlag:false,
+				//loadFileFlag:false,
 				choose_index:1,
 				title: 'choose/previewImage',
 				imageList: [],
@@ -162,12 +169,14 @@
 			
 			submitted(){
 				uni.navigateTo({
-					url:"../refresh/refresh"
+					url:"../modify/modify",
+					
+					
 				})
 			},
 			
 			
-			loadFile(){
+			/*loadFile(){
 				this.fileList=[];
 				uni.chooseFile({
 					extension:['.txt'],
@@ -189,7 +198,29 @@
 						}
 					},
 				});
+			},*/
+			/* 上传 */
+			onUpload() { 
+				this.$refs.lFile.upload({
+					// #ifdef APP-PLUS
+					currentWebview: this.$mp.page.$getAppWebview(),
+					// #endif
+					//非真实地址，记得更换
+					url: 'https://www.example.com/upload',
+					//默认file,上传文件的key
+					name: 'uploadFile',
+					// header: {'Content-Type':'类型','Authorization':'token'},
+					//...其他参数
+				});
 			},
+			onSuccess(res) {
+				console.log('上传成功回调=====33====',JSON.stringify(res));
+				uni.showToast({
+					title: JSON.stringify(res),
+					icon: 'none'
+				})
+			},
+
 			jumpToBasicInfo(){
 				this.choose_index=1;
 			},
