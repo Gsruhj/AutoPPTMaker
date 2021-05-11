@@ -13,7 +13,7 @@
 			<text class="input-placeholder" style="margin: 15rpx;color: #000000;">输入基本信息</text>
 			<view class="horizontal"></view>
 			<view class="table-item">
-				<input class="input"  placeholder="展示标题" placeholder-class="input-placeholder" />
+				<input class="input"  placeholder="展示标题" placeholder-class="input-placeholder" @input="input_header" />
 			</view>
 			<view class="horizontal"></view>
 			<view class="table-item">
@@ -21,7 +21,7 @@
 			</view>
 			<view class="horizontal"></view>
 			<view class="table-item">
-				<input class="input" placeholder="生成页数" placeholder-class="input-placeholder" />
+				<input class="input" placeholder="生成页数" placeholder-class="input-placeholder" @input="input_page_num"/>
 			</view>
 			<view class="horizontal"></view>
 			<text class="input-placeholder" style="margin: 15rpx;color: #000000;">选择您要插入的图片</text>
@@ -63,7 +63,7 @@
 					    <radio-group @change="radioChange">
 					        <label class="uni-list-cell uni-list-cell-pd" v-for="(item, index) in items" :key="item.value">
 					            <view>
-					                <radio :value="item.value" :checked="index === current" />
+					                <radio :value="item.value" :checked="index === template_url" />
 					            </view>
 					            <view>{{item.name}}</view>
 								<view class="template-image-area">
@@ -120,7 +120,8 @@
 				},
 			
 				index: 0,
-				
+				header:"无",
+				page_num:0,
 				
 				items: [{
 				        value: '模板1',
@@ -140,7 +141,7 @@
 					    name: '模板4'
 					},
 				],
-				current: 0
+				template_url: 0
 			}
 		},
 		onUnload() {
@@ -169,13 +170,31 @@
 				this.index = e.target.value
 			},
 			
+			input_header(e) {
+				this.header = e.detail.value
+			},
+			input_page_num(e) {
+				this.page_num = e.detail.value
+			},
 			submitted(){
+				let params = {
+					"title":this.header,
+					"page_num":this.page_num,
+					"template_url":this.template_url
+				};
+				uni.request({
+					url: 'http://api.komavideo.com/news/list',
+					method: 'POST',
+					data: params,
+					success: (res)=>{},
+					fail: (err)=>{}
+				}),
+				
 				uni.navigateTo({
 					url:"../modify/modify",
-					
-					
 				})
 			},
+			
 			
 			
 			/*loadFile(){
@@ -242,7 +261,7 @@
 			radioChange: function(evt) {
 			    for (let i = 0; i < this.items.length; i++) {
 			        if (this.items[i].value === evt.target.value) {
-			            this.current = i;
+			            this.template_url = i;
 			            break;
 			        }
 			    }
