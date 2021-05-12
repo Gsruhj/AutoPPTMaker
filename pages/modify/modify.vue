@@ -13,6 +13,7 @@
 					<view class="uni-textarea">
 						<textarea placeholder-style="color:#ff0000" :placeholder="summ.name" @input="input_summary"/>
 					</view>
+
 					<view class="horizontal"></view>
 				</view>
 				<view class="image-area">
@@ -53,6 +54,8 @@
 						heading:"Four",
 					},
 				],
+				
+				id:0,
 			}
 		},
 		methods: {
@@ -74,6 +77,12 @@
 				this.summary[index].name = e.detail.value
 			},
 			
+			add_item_to_list(e){
+				this.summary.push({name:"请添加标题",heading:"请添加摘要"})
+				this.id=e.deatil.index
+				//this.summary.splice(id,0,{name:"请添加标题",heading:"请添加摘要"})
+			},
+			
 			submitted(){
 				let params = {
 					"summary":this.summary,
@@ -91,10 +100,47 @@
 				})
 			},
 			
-			add_item_to_list(){
-				this.summary.push({name:"请添加标题",heading:"请添加摘要"})
+			onShow() {
+				//alert('触发了！')
+				//.判断是否已连接
+				this.checkOpenSocket();
 			},
-			
+			 // 判断是否已连接
+			checkOpenSocket () {
+				let self = this;
+				uni.sendSocketMessage({
+					data: 'ping',
+					success: (res) => {
+						return;
+					},
+					fail: (err) => { 	// 未连接打开websocket连接
+						self.openConnection(); 
+					}
+				});
+			},
+			openConnection () { 	// 打开连接
+				uni.closeSocket(); 	// 确保已经关闭后再重新打开
+				uni.connectSocket({
+					url: 'wss://www.example.com/socket',
+					method: 'POST',
+					success(res) {
+						console.log('连接成功 connectSocket=', res);
+					},
+					fail(err) {
+						console.log('连接失败 connectSocket=', err);
+					}
+				});
+				uni.onSocketOpen((res) => {
+					console.log('连接成功', res);
+				});
+				// 打开成功监听服务器返回的消息
+				uni.onSocketMessage(function (res) {
+				  console.log('收到服务器内容：' + res.data);
+				  this.summary=res.data;
+				});
+				uni.closeSocket();
+			},
+
 		}
 	}
 </script>

@@ -251,7 +251,6 @@
 			
 			jumpToChoseTemplate(){
 				this.choose_index=3;
-				onShow();
 			},
 			onShow(){
 				//alert('触发了！')
