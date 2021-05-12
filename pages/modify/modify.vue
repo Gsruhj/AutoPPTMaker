@@ -13,11 +13,10 @@
 					<view class="uni-textarea">
 						<textarea placeholder-style="color:#ff0000" :placeholder="summ.name" @input="input_summary"/>
 					</view>
-
+					<view class="image-area">
+						<image class="add_list" src="../../static/add.jpg"  @click="add_item_to_list(index)"></image>
+					</view>
 					<view class="horizontal"></view>
-				</view>
-				<view class="image-area">
-					<image class="add_list" src="../../static/add.jpg"  @click="add_item_to_list"></image>
 				</view>
 			</scroll-view>
 			<view>
@@ -77,10 +76,10 @@
 				this.summary[index].name = e.detail.value
 			},
 			
-			add_item_to_list(e){
-				this.summary.push({name:"请添加标题",heading:"请添加摘要"})
-				this.id=e.deatil.index
-				//this.summary.splice(id,0,{name:"请添加标题",heading:"请添加摘要"})
+			add_item_to_list(index){
+				//this.summary.push({name:"请添加标题",heading:"请添加摘要"})
+				//this.summary.unshift({name:"请添加标题",heading:"请添加摘要"})
+				this.summary.splice(index+1,0,{name:"请添加标题",heading:"请添加摘要"})
 			},
 			
 			submitted(){
