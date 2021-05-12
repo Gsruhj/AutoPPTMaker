@@ -42,8 +42,8 @@
 		display: flex;
 		flex-direction: column;
 		position: absolute;
-		width: 524px;
-		height: 700px;
+		width: 100%;
+		height: 100%;
 	}
 	
 	.horizontal {
@@ -76,8 +76,8 @@
 	}
 	
 	.download-file{
-			  width: 500rpx;
-			  height: 500rpx;
+			  width: 400rpx;
+			  height: 400rpx;
 	}
 
 </style>

@@ -67,8 +67,7 @@
 					            </view>
 					            <view>{{item.name}}</view>
 								<view class="template-image-area">
-									<image class="template_size" src="/static/template/模板1.png"></image>
-									
+									<image class="template_size" :src="'/static/template/'+item.name+'.png'"></image>
 								</view>
 					        </label>
 					    </radio-group>

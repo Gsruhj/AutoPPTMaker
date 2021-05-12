@@ -5,14 +5,18 @@
 		<view>
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 				@scroll="scroll">
-				<view class="uni-list" v-for="summ in summary" :key="summ.heading">>
+				<view class="uni-list" v-for="summ,index in summary" :key="summ.heading">>
+					{{index}}
 				    <view class="table-item">
-				        <input class="input" :placeholder="summ.heading" placeholder-class="input-placeholder" />
+				        <input class="input" :placeholder="summ.heading" placeholder-class="input-placeholder" @input="input_heading"/>
 				    </view>
 					<view class="uni-textarea">
-						<textarea placeholder-style="color:#F76260" :placeholder="summ.name"/>
+						<textarea placeholder-style="color:#ff0000" :placeholder="summ.name" @input="input_summary"/>
 					</view>
 					<view class="horizontal"></view>
+				</view>
+				<view class="image-area">
+					<image class="add_list" src="../../static/add.jpg"  @click="add_item_to_list"></image>
 				</view>
 			</scroll-view>
 			<view>
@@ -63,9 +67,16 @@
 				this.old.scrollTop = e.detail.scrollTop
 			},
 			
+			input_heading(e) {
+				this.summary[index].heading = e.detail.value
+			},
+			input_summary(e) {
+				this.summary[index].name = e.detail.value
+			},
+			
 			submitted(){
 				let params = {
-
+					"summary":this.summary,
 				};
 				uni.request({
 					url: 'http://api.komavideo.com/news/list',
@@ -76,9 +87,14 @@
 				}),
 				
 				uni.navigateTo({
-					url:"../modify/modify",
+					url:"../ppt/ppt",
 				})
 			},
+			
+			add_item_to_list(){
+				this.summary.push({name:"请添加标题",heading:"请添加摘要"})
+			},
+			
 		}
 	}
 </script>
@@ -132,6 +148,20 @@
 	.uni-textarea{
 		width:100%;
 		background:#FFF;
+	}
+	
+	/*add item to list*/
+	.image-area{
+			  position: relative;
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			  width: 100%;
+			  height: 30%;
+	}
+	.add_list{
+		width: 150rpx;
+		height: 150rpx;
 	}
 
 </style>
