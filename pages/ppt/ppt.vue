@@ -7,12 +7,12 @@
 				@scroll="scroll">
 				<view class="uni-list" v-for="content,index in contents" :key="content">
 					{{index}}
-					<view v-for="cont,contindex in content" :key="cont">
+					<view v-for="cont,cont_index in content" :key="cont">
 						<view class="uni-textarea">
 							<textarea placeholder-style="color:#ff0000" :placeholder="cont" @input="input_content"/>
 						</view>
 						<view class="image-area">
-							<image class="add_list" src="../../static/add.jpg"  @click="add_item_to_list(index,contindex)"></image>
+							<image class="add_list" src="../../static/add.jpg"  @click="add_item_to_list(index,cont_index)"></image>
 						</view>
 					</view>
 					<view class="horizontal"></view>
@@ -68,22 +68,75 @@
 			},
 			
 			input_content(e) {
-				this.contents[index][contindex] = e.detail.value
+				this.contents[index][cont_index] = e.detail.value
 			},
-			add_item_to_list(index,contindex){
+			add_item_to_list(index,cont_index){
 				//this.summary.push({name:"请添加标题",heading:"请添加摘要"})
 				//this.summary.unshift({name:"请添加标题",heading:"请添加摘要"})
-				this.contents[index].splice(contindex+1,0,"请添加摘要")
+				this.contents[index].splice(cont_index+1,0,"请添加摘要")
 			},
 			
 			submitted(){
 				
 				uni.navigateTo({
 					url:"../download/download",
-				})
+				});
 				
+				
+				let params = {
+					"content":this.contents,
+				};
+				uni.request({
+					url: 'http://api.komavideo.com/news/list',
+					method: 'POST',
+					data: params,
+					success: (res)=>{},
+					fail: (err)=>{}
+				})
 
 			},
+			
+			onShow() {
+				//alert('触发了！')
+				//.判断是否已连接
+				this.checkOpenSocket();
+			},
+			 // 判断是否已连接
+			checkOpenSocket () {
+				let self = this;
+				uni.sendSocketMessage({
+					data: 'ping',
+					success: (res) => {
+						return;
+					},
+					fail: (err) => { 	// 未连接打开websocket连接
+						self.openConnection(); 
+					}
+				});
+			},
+			openConnection () { 	// 打开连接
+				uni.closeSocket(); 	// 确保已经关闭后再重新打开
+				uni.connectSocket({
+					url: 'wss://www.example.com/socket',
+					method: 'POST',
+					success(res) {
+						console.log('连接成功 connectSocket=', res);
+					},
+					fail(err) {
+						console.log('连接失败 connectSocket=', err);
+					}
+				});
+				uni.onSocketOpen((res) => {
+					console.log('连接成功', res);
+				});
+				// 打开成功监听服务器返回的消息
+				uni.onSocketMessage(function (res) {
+				  console.log('收到服务器内容：' + res.data);
+				  this.summary=res.data;
+				});
+				uni.closeSocket();
+			},
+			
 			
 		}
 	}

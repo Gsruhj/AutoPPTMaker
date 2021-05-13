@@ -96,7 +96,7 @@
 				
 				uni.navigateTo({
 					url:"../ppt/ppt",
-				})
+				});
 				
 				console.log("cut1");
 				uni.login({

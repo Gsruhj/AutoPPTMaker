@@ -17,7 +17,7 @@
 			</view>
 			<view class="horizontal"></view>
 			<view class="table-item">
-				<input class="input" placeholder="演讲者" placeholder-class="input-placeholder" />
+				<input class="input" placeholder="PPT需要划分的逻辑部分个数" placeholder-class="input-placeholder" @input="input_cut_num" />
 			</view>
 			<view class="horizontal"></view>
 			<view class="table-item">
@@ -121,6 +121,7 @@
 				index: 0,
 				header:"无",
 				page_num:0,
+				cut_num:0,
 				
 				items: [{
 				        value: '模板1',
@@ -175,11 +176,15 @@
 			input_page_num(e) {
 				this.page_num = e.detail.value
 			},
+			input_cut_num(e) {
+				this.cut_num = e.detail.value
+			},
 			submitted(){
 				let params = {
 					"title":this.header,
 					"page_num":this.page_num,
-					"template_url":this.template_url
+					"cut_num":this.cut_num,
+					"template_url":this.template_url,
 				};
 				uni.request({
 					url: 'http://api.komavideo.com/news/list',
