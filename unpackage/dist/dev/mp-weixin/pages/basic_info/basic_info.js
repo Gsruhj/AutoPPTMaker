@@ -93,6 +93,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    lFile: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/l-file/components/l-file/l-file */ "uni_modules/l-file/components/l-file/l-file").then(__webpack_require__.bind(null, /*! @/uni_modules/l-file/components/l-file/l-file.vue */ 70))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -214,21 +237,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var sourceType = [
 ['camera'],
@@ -238,13 +246,16 @@ var sourceType = [
 var sizeType = [
 ['compressed'],
 ['original'],
-['compressed', 'original']];var _default =
+['compressed', 'original']];var lFile = function lFile() {__webpack_require__.e(/*! require.ensure | uni_modules/l-file/components/l-file/l-file */ "uni_modules/l-file/components/l-file/l-file").then((function () {return resolve(__webpack_require__(/*! @../../uni_modules/l-file/components/l-file/l-file.vue */ 70));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 {
+  components: { lFile: lFile },
   data: function data() {
     return {
-      loadFileFlag: false,
+      //loadFileFlag:false,
       choose_index: 1,
       title: 'choose/previewImage',
       imageList: [],
@@ -262,8 +273,29 @@ var sizeType = [
         scrollTop: 0 },
 
 
-      array: ['模板1', '模板2', '模板3', '模板4'],
-      index: 0 };
+      index: 0,
+      header: "无",
+      page_num: 0,
+
+      items: [{
+        value: '模板1',
+        name: '模板1' },
+
+      {
+        value: '模板2',
+        name: '模板2',
+        checked: 'true' },
+
+      {
+        value: '模板3',
+        name: '模板3' },
+
+      {
+        value: '模板4',
+        name: '模板4' }],
+
+
+      template_url: 0 };
 
   },
   onUnload: function onUnload() {
@@ -292,36 +324,78 @@ var sizeType = [
       this.index = e.target.value;
     },
 
+    input_header: function input_header(e) {
+      this.header = e.detail.value;
+    },
+    input_page_num: function input_page_num(e) {
+      this.page_num = e.detail.value;
+    },
     submitted: function submitted() {
+      var params = {
+        "title": this.header,
+        "page_num": this.page_num,
+        "template_url": this.template_url };
+
+      uni.request({
+        url: 'http://api.komavideo.com/news/list',
+        method: 'POST',
+        data: params,
+        success: function success(res) {},
+        fail: function fail(err) {} }),
+
+
       uni.navigateTo({
-        url: "../refresh/refresh" });
+        url: "../modify/modify" });
 
     },
 
 
-    loadFile: function loadFile() {var _this = this;
-      this.fileList = [];
-      uni.chooseFile({
-        extension: ['.txt'],
-        success: function success(res) {
-          _this.fileList = _this.fileList.concat(res.tempFilePaths);
-          if (_this.fileList.length != 1) {
-            uni.showToast({
-              icon: "none",
-              title: "请只选择一个txt文件！" });
 
-            _this.fileList = [];
-          } else
-          {
-            uni.showToast({
-              icon: "success",
-              title: "您已选择：  " + res.tempFiles[0].name });
+    /*loadFile(){
+       	this.fileList=[];
+       	uni.chooseFile({
+       		extension:['.txt'],
+       		success: (res) => {
+       			this.fileList = this.fileList.concat(res.tempFilePaths);
+       			if(this.fileList.length!=1){
+       				uni.showToast({
+       					icon:"none",
+       					title:"请只选择一个txt文件！"
+       				})
+       				this.fileList=[];
+       			}
+       			else{
+       				uni.showToast({
+       					icon:"success",
+       					title:"您已选择：  "+res.tempFiles[0].name
+       				});
+       				this.loadFileFlag=true;
+       			}
+       		},
+       	});
+       },*/
+    /* 上传 */
+    onUpload: function onUpload() {
+      this.$refs.lFile.upload({
 
-            _this.loadFileFlag = true;
-          }
-        } });
+
+
+        //非真实地址，记得更换
+        url: 'https://www.example.com/upload',
+        //默认file,上传文件的key
+        name: 'uploadFile'
+        // header: {'Content-Type':'类型','Authorization':'token'},
+        //...其他参数
+      });
+    },
+    onSuccess: function onSuccess(res) {
+      console.log('上传成功回调=====33====', JSON.stringify(res));
+      uni.showToast({
+        title: JSON.stringify(res),
+        icon: 'none' });
 
     },
+
     jumpToBasicInfo: function jumpToBasicInfo() {
       this.choose_index = 1;
     },
@@ -333,8 +407,20 @@ var sizeType = [
     jumpToChoseTemplate: function jumpToChoseTemplate() {
       this.choose_index = 3;
     },
+    onShow: function onShow() {
+      //alert('触发了！')
+    },
 
-    chooseImage: function () {var _chooseImage = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this2 = this;var isContinue;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+    radioChange: function radioChange(evt) {
+      for (var i = 0; i < this.items.length; i++) {
+        if (this.items[i].value === evt.target.value) {
+          this.template_url = i;
+          break;
+        }
+      }
+    },
+
+    chooseImage: function () {var _chooseImage = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this = this;var isContinue;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
 
                 this.imageList.length === 9)) {_context.next = 7;break;}_context.next = 3;return (
                   this.isFullImg());case 3:isContinue = _context.sent;
@@ -348,17 +434,17 @@ var sizeType = [
                   sizeType: sizeType[this.sizeTypeIndex],
                   count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
                   success: function success(res) {
-                    _this2.imageList = _this2.imageList.concat(res.tempFilePaths);
+                    _this.imageList = _this.imageList.concat(res.tempFilePaths);
                   } });case 8:case "end":return _context.stop();}}}, _callee, this);}));function chooseImage() {return _chooseImage.apply(this, arguments);}return chooseImage;}(),
 
 
-    isFullImg: function isFullImg() {var _this3 = this;
+    isFullImg: function isFullImg() {var _this2 = this;
       return new Promise(function (res) {
         uni.showModal({
           content: "已经有9张图片了,是否清空现有图片？",
           success: function success(e) {
             if (e.confirm) {
-              _this3.imageList = [];
+              _this2.imageList = [];
               res(true);
             } else {
               res(false);

@@ -4,7 +4,9 @@
     "pages/basic_info/basic_info",
     "pages/page_struct/page_struct",
     "pages/refresh/refresh",
-    "pages/download/download"
+    "pages/download/download",
+    "pages/modify/modify",
+    "pages/ppt/ppt"
   ],
   "subPackages": [],
   "window": {
@@ -13,5 +15,6 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

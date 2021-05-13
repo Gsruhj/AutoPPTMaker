@@ -175,11 +175,11 @@
 	height: 100%;
 }
 .scroll-Y {
-    height: 750rpx;
+    height: 100%;
 }
 .template_size{
- 	width: 300rpx;
-  	height: 300rpx;
+ 	width: 350rpx;
+  	height: 350rpx;
 }
 .uni-input {
   	height: 50rpx;
@@ -228,6 +228,9 @@
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	        flex: 1;
+}
+.uni-list-cell-pd {
+	padding: 22rpx 30rpx;
 }
 .template-image-area{
 	position: relative;

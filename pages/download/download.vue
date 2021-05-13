@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<view class="table">
-			<text class="input-placeholder" style="margin: 15rpx;margin-bottom: 0rpx;color: #000000;">根据自然语言处理生成的PPT</text>
+			<text class="input-placeholder" style="margin: 15rpx;margin-bottom: 0rpx;color: #000000;">PPT下载</text>
 			<view class="horizontal"></view>
 			<view class="image-area">
 				<image class="download-file" src="../../static/download.png"  @click="downloadFile"></image>

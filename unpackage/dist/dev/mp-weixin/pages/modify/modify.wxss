@@ -1,0 +1,84 @@
+
+.input-placeholder{
+	color: #bcbcbc;
+	font-size: 125%;
+}
+.scroll-Y {
+    height: 100%;
+}
+.uni-list {
+  	background-color: #FFFFFF;
+  	position: relative;
+  	width: 100%;
+  	display: -webkit-box;
+  	display: -webkit-flex;
+  	display: flex;
+  	-webkit-box-orient: vertical;
+  	-webkit-box-direction: normal;
+  	-webkit-flex-direction: column;
+  	        flex-direction: column;
+}
+.uni-list-cell {
+  	position: relative;
+  	display: -webkit-box;
+  	display: -webkit-flex;
+  	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+  	-webkit-box-pack: justify;
+  	-webkit-justify-content: space-between;
+  	        justify-content: space-between;
+  	-webkit-box-align: center;
+  	-webkit-align-items: center;
+  	        align-items: center;
+}
+.uni-list-cell-left {
+    white-space: nowrap;
+  	font-size:28rpx;
+  	padding: 0 30rpx;
+}
+.uni-list-cell-db{
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+}
+.uni-list-cell-pd {
+	padding: 22rpx 30rpx;
+}
+.table-item{
+	margin-top: 15rpx;
+}
+.input-placeholder{
+	color: #bcbcbc;
+	font-size: 125%;
+}
+
+/* textarea */
+.uni-textarea{
+	width:100%;
+	background:#FFF;
+}
+
+/*add item to list*/
+.image-area{
+		  position: relative;
+		  display: -webkit-box;
+		  display: -webkit-flex;
+		  display: flex;
+		  -webkit-box-align: center;
+		  -webkit-align-items: center;
+		          align-items: center;
+		  -webkit-box-pack: center;
+		  -webkit-justify-content: center;
+		          justify-content: center;
+		  width: 100%;
+		  height: 30%;
+}
+.add_list{
+	width: 150rpx;
+	height: 150rpx;
+}
+
+

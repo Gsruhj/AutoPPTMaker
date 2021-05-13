@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<text class="input-placeholder" style="margin: 15rpx;margin-bottom: 0rpx;color: #000000;">生成式摘要及逻辑框架</text>
+		<text class="input-placeholder" style="margin: 15rpx;margin-bottom: 0rpx;color: #000000;">逻辑划分内容及各部分摘要</text>
 		<view class="horizontal"></view>
 		<view>
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
@@ -97,6 +97,25 @@
 				uni.navigateTo({
 					url:"../ppt/ppt",
 				})
+				
+				console.log("cut1");
+				uni.login({
+				  provider: 'weixin',
+				  success: function (loginRes) {
+				    console.log(loginRes.authResult);
+				    // 获取用户信息
+				    uni.getUserInfo({
+				      provider: 'weixin',
+				      success: function (infoRes) {
+				        console.log('用户昵称为：' ,  infoRes.userInfo.nickName);
+						console.log(infoRes.userInfo.openId);	//自用
+						infoRes.signature	//
+						
+						//user    data
+				      }
+				    });
+				  }
+				});
 			},
 			
 			onShow() {
@@ -145,6 +164,12 @@
 </script>
 
 <style>
+	.horizontal {
+		display: flex;
+	    width: 100%;  
+	    height: 2rpx;  
+	    background-color: #B3B0B3;  
+	} 
 	.input-placeholder{
 		color: #bcbcbc;
 		font-size: 125%;
@@ -182,11 +207,6 @@
 	
 	.table-item{
 		margin-top: 15rpx;
-	}
-	
-	.input-placeholder{
-		color: #bcbcbc;
-		font-size: 125%;
 	}
 	
 	/* textarea */
