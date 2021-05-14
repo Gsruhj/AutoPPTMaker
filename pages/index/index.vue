@@ -7,10 +7,12 @@
 			<image class="logo-begin" src="../../static/logo/transparent.png" @tap="begin"></image>
 		</view>
 		
-		<uni-drawer ref="showRight" mode="left" :mask-click="false">
+		<uni-drawer ref="showLeft" mode="left" :mask-click="true">
 		    <scroll-view style="height: 100%;" scroll-y="true">
-				<view v-for="item in 5" :key="item">可滚动内容 {{ item }}</view>
-		        <button @click="closeDrawer" type="primary">关闭Drawer</button>
+				<view v-for="item in 1" :key="item">可滚动内容 {{ item }}</view>
+				<button type="default" size="mini">登录</button>
+				<button type="default" size="mini">打卡</button>
+		        <button @click="closeDrawer" type="warn" size="mini">关闭设置</button>
 		    </scroll-view>
 		</uni-drawer>
 	</view>
@@ -34,10 +36,10 @@
 			},
 			
 			showDrawer() {
-			    this.$refs.showRight.open();
+			    this.$refs.showLeft.open();
 			},
 			closeDrawer() {
-			    this.$refs.showRight.close();
+			    this.$refs.showLeft.close();
 			},
 			
 		}

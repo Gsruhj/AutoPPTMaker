@@ -9,7 +9,7 @@
 					{{index}}
 					<view v-for="cont,cont_index in content" :key="cont">
 						<view class="uni-textarea">
-							<textarea placeholder-style="color:#ff0000" :placeholder="cont" @input="input_content"/>
+							<textarea :value="cont" @input="input_content"/>
 						</view>
 						<view class="image-area">
 							<image class="add_list" src="../../static/add.jpg"  @click="add_item_to_list(index,cont_index)"></image>

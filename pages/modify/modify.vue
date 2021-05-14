@@ -8,10 +8,10 @@
 				<view class="uni-list" v-for="summ,index in summary" :key="summ.heading">>
 					{{index}}
 				    <view class="table-item">
-				        <input class="input" :placeholder="summ.heading" placeholder-class="input-placeholder" @input="input_heading"/>
+				        <input class="input" :value="summ.heading" @input="input_heading"/>
 				    </view>
 					<view class="uni-textarea">
-						<textarea placeholder-style="color:#ff0000" :placeholder="summ.name" @input="input_summary"/>
+						<textarea :value="summ.name" @input="input_summary"/>
 					</view>
 					<view class="image-area">
 						<image class="add_list" src="../../static/add.jpg"  @click="add_item_to_list(index)"></image>
