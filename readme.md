@@ -13,6 +13,10 @@
 
 - uni-drawer 抽屉 [https://ext.dcloud.net.cn/plugin?id=26](https://ext.dcloud.net.cn/plugin?id=26)
 
+- uni-nav-bar 自定义导航栏 [https://ext.dcloud.net.cn/plugin?id=52](https://ext.dcloud.net.cn/plugin?id=52)
+
+- uni-icons 图标 [https://ext.dcloud.net.cn/plugin?id=28](https://ext.dcloud.net.cn/plugin?id=28)
+
 
 
 ## 小程序链接
