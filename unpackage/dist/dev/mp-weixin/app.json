@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/basic_info/basic_info",
-    "pages/page_struct/page_struct",
     "pages/refresh/refresh",
     "pages/download/download",
     "pages/modify/modify",

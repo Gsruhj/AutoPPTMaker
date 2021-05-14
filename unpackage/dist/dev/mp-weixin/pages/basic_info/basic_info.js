@@ -96,7 +96,7 @@ var components
 try {
   components = {
     lFile: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/l-file/components/l-file/l-file */ "uni_modules/l-file/components/l-file/l-file").then(__webpack_require__.bind(null, /*! @/uni_modules/l-file/components/l-file/l-file.vue */ 70))
+      return __webpack_require__.e(/*! import() | uni_modules/l-file/components/l-file/l-file */ "uni_modules/l-file/components/l-file/l-file").then(__webpack_require__.bind(null, /*! @/uni_modules/l-file/components/l-file/l-file.vue */ 76))
     }
   }
 } catch (e) {
@@ -246,7 +246,7 @@ var sourceType = [
 var sizeType = [
 ['compressed'],
 ['original'],
-['compressed', 'original']];var lFile = function lFile() {__webpack_require__.e(/*! require.ensure | uni_modules/l-file/components/l-file/l-file */ "uni_modules/l-file/components/l-file/l-file").then((function () {return resolve(__webpack_require__(/*! @../../uni_modules/l-file/components/l-file/l-file.vue */ 70));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+['compressed', 'original']];var lFile = function lFile() {__webpack_require__.e(/*! require.ensure | uni_modules/l-file/components/l-file/l-file */ "uni_modules/l-file/components/l-file/l-file").then((function () {return resolve(__webpack_require__(/*! @../../uni_modules/l-file/components/l-file/l-file.vue */ 76));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -276,6 +276,7 @@ var sizeType = [
       index: 0,
       header: "无",
       page_num: 0,
+      cut_num: 0,
 
       items: [{
         value: '模板1',
@@ -330,10 +331,14 @@ var sizeType = [
     input_page_num: function input_page_num(e) {
       this.page_num = e.detail.value;
     },
+    input_cut_num: function input_cut_num(e) {
+      this.cut_num = e.detail.value;
+    },
     submitted: function submitted() {
       var params = {
         "title": this.header,
         "page_num": this.page_num,
+        "cut_num": this.cut_num,
         "template_url": this.template_url };
 
       uni.request({

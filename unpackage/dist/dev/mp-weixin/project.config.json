@@ -8,19 +8,23 @@
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "wx1db000eae331347c",
+  "appid": "touristappid",
   "projectname": "AutoPPTMaker",
   "condition": {
     "search": {
+      "current": -1,
       "list": []
     },
     "conversation": {
+      "current": -1,
       "list": []
     },
     "game": {
+      "current": -1,
       "list": []
     },
     "miniprogram": {
+      "current": -1,
       "list": []
     }
   }

@@ -17,11 +17,11 @@
 			</view>
 			<view class="horizontal"></view>
 			<view class="table-item">
-				<input class="input" placeholder="PPT需要划分的逻辑部分个数" placeholder-class="input-placeholder" @input="input_cut_num" />
+				<input class="input" placeholder="PPT需要划分的逻辑部分个数" type="number" placeholder-class="input-placeholder" @input="input_cut_num" />
 			</view>
 			<view class="horizontal"></view>
 			<view class="table-item">
-				<input class="input" placeholder="生成页数" placeholder-class="input-placeholder" @input="input_page_num"/>
+				<input class="input" placeholder="生成页数" type="number" placeholder-class="input-placeholder" @input="input_page_num"/>
 			</view>
 			<view class="horizontal"></view>
 			<text class="input-placeholder" style="margin: 15rpx;color: #000000;">选择您要插入的图片</text>
