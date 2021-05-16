@@ -181,10 +181,12 @@ export default {
 				return this.errorHandler('文件上传失败',this.upErr)
 			};
 			opt['success'] = (res) => {
+				console.log(res.data);
 				if (res.statusCode==200) {
-					let data = JSON.parse(res.data);
+					let data = JSON.parse(res.data); 
 					//可自行添加后台返回状态验证
 					return this.onCommit(this.$emit('up-success',{fileName,data}));
+					
 				}
 				return this.errorHandler('文件上传失败',this.upErr);
 			};
@@ -485,3 +487,4 @@ export default {
 	}
 	
 </style>
+

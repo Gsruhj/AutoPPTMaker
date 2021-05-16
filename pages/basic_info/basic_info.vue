@@ -112,6 +112,11 @@
 				countIndex: 8,
 				count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
 				
+				username:null,
+				mydata:{
+					"username":this.username
+				},
+				
 				
 				scrollTop: 0,
 				old: {
@@ -152,6 +157,13 @@
 				this.sizeTypeIndex = 2,
 				this.sizeType = ['压缩', '原图', '压缩或原图'],
 				this.countIndex = 8;
+		},
+		onLoad(option) {
+			console.log('转移的用户名',option.username);
+			//["username=wx1db000eae331347c:1lhtmV:8L2UEYmk5uZtmKTg7P0-ozROkuU0E0KhhpfK_pKPNkw; Path=/"]
+			//var myusername="'username':"+option.username;
+			//console.log(myusername)
+			this.username=option.username;
 		},
 		methods: {
 			upper: function(e) {
@@ -228,18 +240,20 @@
 			onUpload() { 
 				this.$refs.lFile.upload({
 					// #ifdef APP-PLUS
-					currentWebview: this.$mp.page.$getAppWebview(),
+					//currentWebview: this.$mp.page.$getAppWebview(),
 					// #endif
 					//非真实地址，记得更换
-					url: 'https://www.example.com/upload',
+					url: 'http://127.0.0.1:8000/upload',
 					//默认file,上传文件的key
-					name: 'uploadFile',
+					name: 'file',
+					header: {'Content-Type': 'multipart/form-data'},
 					// header: {'Content-Type':'类型','Authorization':'token'},
 					//...其他参数
 				});
 			},
 			onSuccess(res) {
 				console.log('上传成功回调=====33====',JSON.stringify(res));
+				//console.log('path:',res.data.path);
 				uni.showToast({
 					title: JSON.stringify(res),
 					icon: 'none'

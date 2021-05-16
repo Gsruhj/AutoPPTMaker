@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App'
+import './uni_modules/weapp-cookie/dist/weapp-cookie'
 
 Vue.config.productionTip = false
 

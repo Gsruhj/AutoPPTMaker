@@ -10,12 +10,10 @@
 ## 使用插件
 
 - 附件选择上传下载APP-H5-小程序  [https://ext.dcloud.net.cn/plugin?id=1015](https://ext.dcloud.net.cn/plugin?id=1015)
-
 - uni-drawer 抽屉 [https://ext.dcloud.net.cn/plugin?id=26](https://ext.dcloud.net.cn/plugin?id=26)
-
 - uni-nav-bar 自定义导航栏 [https://ext.dcloud.net.cn/plugin?id=52](https://ext.dcloud.net.cn/plugin?id=52)
-
 - uni-icons 图标 [https://ext.dcloud.net.cn/plugin?id=28](https://ext.dcloud.net.cn/plugin?id=28)
+- weapp-cookie [https://github.com/charleslo1/weapp-cookie](https://github.com/charleslo1/weapp-cookie)
 
 
 
