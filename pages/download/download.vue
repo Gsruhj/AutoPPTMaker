@@ -3,9 +3,14 @@
 		<view class="table">
 			<text class="input-placeholder" style="margin: 15rpx;margin-bottom: 0rpx;color: #000000;">PPT下载</text>
 			<view class="horizontal"></view>
-			<view class="image-area">
-				<image class="download-file" src="../../static/download.png"  @click="downloadFile"></image>
+			
+			<l-file ref="lFile" @up-success="onSuccess"></l-file>
+			<view class="padding text-center">
+				<view class="padding">
+					<button @tap="onDownload">PPT下载</button>
+				</view>
 			</view>
+			
 		</view>
 	</view>
 </template>
@@ -16,23 +21,35 @@
 			return {
 				title: 'choose/previewImage',
 				fileList:[],
+				ppt_url:null,
 			}
 		},
-		methods: {
-			downloadFile(){
-				this.fileList=[];
-				uni.chooseImage({
-				  success: function (res) {
-				    var tempFilePaths = res.tempFilePaths;
-				    uni.saveFile({
-				      tempFilePath: tempFilePaths[0],
-				      success: function (res) {
-				        var savedFilePath = res.savedFilePath;
-				      }
-				    });
-				  }
+		onLoad(options) {
+			this.ppt_url=options.ppt_url;
+		},
+		methods: {	
+			onDownload(){
+				/**
+				* 保存到本地
+				* type 非save为临时下载
+				* customName 仅type=save生效 附件自定义名称需带后缀，自定义目录需以/结尾
+				* DownloadOptions 仅type=save生效 可选参数(http://www.html5plus.org/doc/zh_cn/downloader.html#plus.downloader.DownloadOptions)
+				* 默认下载到_downloads/files/ 可通过DownloadOptions自定义
+				*/
+				this.$refs.lFile.download({
+					url:this.ppt_url, //必填，附件网络地址
+					type:'save', //选填，非save为临时下载
+					customName:'test.pptx',
+					//customName:'自定义文件名需要带后缀.jpg',
+					//...DownloadOptions直接写key:value 
+					// 例如：
+					method: 'GET'
+				})
+				.then(path=>{
+					this.localPath = path;
 				});
 			},
+			
 		}
 	}
 </script>

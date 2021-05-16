@@ -52,8 +52,12 @@
 						"durant",
 					],
 				],
+				ppt_url:null,
 				
 			}
+		},
+		onLoad(options) {
+			this.contents=options.contents;
 		},
 		methods: {
 			upper: function(e) {
@@ -79,19 +83,24 @@
 			submitted(){
 				
 				uni.navigateTo({
-					url:"../download/download",
+					url:"../download/download?ppt_url="+this.ppt_url,
 				});
 				
 				
 				let params = {
-					"content":this.contents,
+					"display":this.contents,
 				};
 				uni.request({
-					url: 'http://api.komavideo.com/news/list',
+					url: 'http://127.0.0.1:8000/getPPT',
 					method: 'POST',
 					data: params,
-					success: (res)=>{},
-					fail: (err)=>{}
+					success: (res)=>{
+						console.log(res.data);
+						this.ppt_url=res.data.url;
+					},
+					fail: (err)=>{
+						
+					}
 				})
 
 			},
@@ -99,7 +108,7 @@
 			onShow() {
 				//alert('触发了！')
 				//.判断是否已连接
-				this.checkOpenSocket();
+				//this.checkOpenSocket();
 			},
 			 // 判断是否已连接
 			checkOpenSocket () {

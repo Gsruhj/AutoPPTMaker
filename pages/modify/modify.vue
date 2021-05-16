@@ -55,7 +55,13 @@
 				],
 				
 				id:0,
+				contents:null,
 			}
+		},
+		onLoad(options) {
+			console.log('转移的summary',option.summary);
+			this.summary=options.summary;
+			
 		},
 		methods: {
 			upper: function(e) {
@@ -83,19 +89,24 @@
 			},
 			
 			submitted(){
-				let params = {
+				let params = {					
 					"summary":this.summary,
 				};
 				uni.request({
-					url: 'http://api.komavideo.com/news/list',
+					url: 'http://127.0.0.1:8000/display',
 					method: 'POST',
 					data: params,
-					success: (res)=>{},
-					fail: (err)=>{}
+					success: (res)=>{
+						console.log(res.data);
+						this.contents=res.data.display;
+					},
+					fail: (err)=>{
+						
+					}
 				}),
 				
 				uni.navigateTo({
-					url:"../ppt/ppt",
+					url:"../ppt/ppt?contents="+this.contents,
 				});
 				
 			},

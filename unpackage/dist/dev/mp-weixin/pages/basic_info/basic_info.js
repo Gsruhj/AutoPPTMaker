@@ -282,6 +282,8 @@ var sizeType = [
       header: "无",
       page_num: 0,
       cut_num: 0,
+      file_url: null,
+      summary: null,
 
       items: [{
         value: '模板1',
@@ -346,24 +348,30 @@ var sizeType = [
     input_cut_num: function input_cut_num(e) {
       this.cut_num = e.detail.value;
     },
-    submitted: function submitted() {
+    submitted: function submitted() {var _this = this;
       var params = {
         "title": this.header,
         "page_num": this.page_num,
         "cut_num": this.cut_num,
-        "template_url": this.template_url };
+        "template_id": this.template_url,
+        "file_url": this.file_url };
 
       uni.request({
-        url: 'http://api.komavideo.com/news/list',
+        url: 'http://127.0.0.1:8000/information',
         method: 'POST',
         data: params,
-        success: function success(res) {},
+        success: function success(res) {
+          console.log(res.data);
+          _this.summary = res.data.summary;
+
+        },
         fail: function fail(err) {} }),
 
 
       uni.navigateTo({
-        url: "../modify/modify" });
+        url: "../modify/modify?summary=" + this.summary }),
 
+      console.log("fileurl", this.file_url);
     },
 
 
@@ -391,7 +399,17 @@ var sizeType = [
        		},
        	});
        },*/
+
     /* 上传 */
+    /* 
+             选择文件并上传
+             
+             currentWebview=当前窗口，仅app端需要传，且必传
+             
+             url=上传服务器地址，必填
+             name=上传文件的key(选填，默认为file)
+             header=请求头(选填)
+             */
     onUpload: function onUpload() {
       this.$refs.lFile.upload({
 
@@ -409,6 +427,8 @@ var sizeType = [
     onSuccess: function onSuccess(res) {
       console.log('上传成功回调=====33====', JSON.stringify(res));
       //console.log('path:',res.data.path);
+      this.return_data = res.data;
+
       uni.showToast({
         title: JSON.stringify(res),
         icon: 'none' });
@@ -439,7 +459,7 @@ var sizeType = [
       }
     },
 
-    chooseImage: function () {var _chooseImage = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this = this;var isContinue;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+    chooseImage: function () {var _chooseImage = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this2 = this;var isContinue;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
 
                 this.imageList.length === 9)) {_context.next = 7;break;}_context.next = 3;return (
                   this.isFullImg());case 3:isContinue = _context.sent;
@@ -453,17 +473,17 @@ var sizeType = [
                   sizeType: sizeType[this.sizeTypeIndex],
                   count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
                   success: function success(res) {
-                    _this.imageList = _this.imageList.concat(res.tempFilePaths);
+                    _this2.imageList = _this2.imageList.concat(res.tempFilePaths);
                   } });case 8:case "end":return _context.stop();}}}, _callee, this);}));function chooseImage() {return _chooseImage.apply(this, arguments);}return chooseImage;}(),
 
 
-    isFullImg: function isFullImg() {var _this2 = this;
+    isFullImg: function isFullImg() {var _this3 = this;
       return new Promise(function (res) {
         uni.showModal({
           content: "已经有9张图片了,是否清空现有图片？",
           success: function success(e) {
             if (e.confirm) {
-              _this2.imageList = [];
+              _this3.imageList = [];
               res(true);
             } else {
               res(false);

@@ -181,11 +181,15 @@ var _default =
       [
       "jack",
       "james",
-      "durant"]] };
+      "durant"]],
 
 
+      ppt_url: null };
 
 
+  },
+  onLoad: function onLoad(options) {
+    this.contents = options.contents;
   },
   methods: {
     upper: function upper(e) {
@@ -208,22 +212,27 @@ var _default =
       this.contents[index].splice(cont_index + 1, 0, "请添加摘要");
     },
 
-    submitted: function submitted() {
+    submitted: function submitted() {var _this = this;
 
       uni.navigateTo({
-        url: "../download/download" });
+        url: "../download/download?ppt_url=" + this.ppt_url });
 
 
 
       var params = {
-        "content": this.contents };
+        "display": this.contents };
 
       uni.request({
-        url: 'http://api.komavideo.com/news/list',
+        url: 'http://127.0.0.1:8000/getPPT',
         method: 'POST',
         data: params,
-        success: function success(res) {},
-        fail: function fail(err) {} });
+        success: function success(res) {
+          console.log(res.data);
+          _this.ppt_url = res.data.url;
+        },
+        fail: function fail(err) {
+
+        } });
 
 
     },
@@ -231,7 +240,7 @@ var _default =
     onShow: function onShow() {
       //alert('触发了！')
       //.判断是否已连接
-      this.checkOpenSocket();
+      //this.checkOpenSocket();
     },
     // 判断是否已连接
     checkOpenSocket: function checkOpenSocket() {

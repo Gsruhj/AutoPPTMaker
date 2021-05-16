@@ -93,6 +93,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    lFile: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/l-file/components/l-file/l-file */ "uni_modules/l-file/components/l-file/l-file").then(__webpack_require__.bind(null, /*! @/uni_modules/l-file/components/l-file/l-file.vue */ 77))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -130,7 +153,12 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
 //
 //
 //
@@ -147,25 +175,35 @@ var _default =
   data: function data() {
     return {
       title: 'choose/previewImage',
-      fileList: [] };
+      fileList: [],
+      ppt_url: null };
 
   },
+  onLoad: function onLoad(options) {
+    this.ppt_url = options.ppt_url;
+  },
   methods: {
-    downloadFile: function downloadFile() {
-      this.fileList = [];
-      uni.chooseImage({
-        success: function success(res) {
-          var tempFilePaths = res.tempFilePaths;
-          uni.saveFile({
-            tempFilePath: tempFilePaths[0],
-            success: function success(res) {
-              var savedFilePath = res.savedFilePath;
-            } });
+    onDownload: function onDownload() {var _this = this;
+      /**
+                                                         * 保存到本地
+                                                         * type 非save为临时下载
+                                                         * customName 仅type=save生效 附件自定义名称需带后缀，自定义目录需以/结尾
+                                                         * DownloadOptions 仅type=save生效 可选参数(http://www.html5plus.org/doc/zh_cn/downloader.html#plus.downloader.DownloadOptions)
+                                                         * 默认下载到_downloads/files/ 可通过DownloadOptions自定义
+                                                         */
+      this.$refs.lFile.download({
+        url: this.ppt_url, //必填，附件网络地址
+        type: 'save', //选填，非save为临时下载
+        customName: 'test.pptx',
+        //customName:'自定义文件名需要带后缀.jpg',
+        //...DownloadOptions直接写key:value 
+        // 例如：
+        method: 'GET' }).
 
-        } });
-
+      then(function (path) {
+        _this.localPath = path;
+      });
     } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

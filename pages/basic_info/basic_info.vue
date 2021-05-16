@@ -127,6 +127,8 @@
 				header:"无",
 				page_num:0,
 				cut_num:0,
+				file_url:null,
+				summary:null,
 				
 				items: [{
 				        value: '模板1',
@@ -196,19 +198,25 @@
 					"title":this.header,
 					"page_num":this.page_num,
 					"cut_num":this.cut_num,
-					"template_url":this.template_url,
+					"template_id":this.template_url,
+					"file_url":this.file_url,
 				};
 				uni.request({
-					url: 'http://api.komavideo.com/news/list',
+					url: 'http://127.0.0.1:8000/information',
 					method: 'POST',
 					data: params,
-					success: (res)=>{},
+					success: (res)=>{
+						console.log(res.data);
+						this.summary=res.data.summary;
+						
+					},
 					fail: (err)=>{}
 				}),
 				
 				uni.navigateTo({
-					url:"../modify/modify",
-				})
+					url:"../modify/modify?summary="+this.summary,
+				}),
+				console.log("fileurl",this.file_url)  
 			},
 			
 			
@@ -236,7 +244,17 @@
 					},
 				});
 			},*/
+			
 			/* 上传 */
+			/* 
+			选择文件并上传
+			
+			currentWebview=当前窗口，仅app端需要传，且必传
+			
+			url=上传服务器地址，必填
+			name=上传文件的key(选填，默认为file)
+			header=请求头(选填)
+			*/		
 			onUpload() { 
 				this.$refs.lFile.upload({
 					// #ifdef APP-PLUS
@@ -254,6 +272,8 @@
 			onSuccess(res) {
 				console.log('上传成功回调=====33====',JSON.stringify(res));
 				//console.log('path:',res.data.path);
+				this.return_data=res.data;
+				
 				uni.showToast({
 					title: JSON.stringify(res),
 					icon: 'none'

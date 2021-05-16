@@ -186,7 +186,13 @@ var _default =
 
 
 
-      id: 0 };
+      id: 0,
+      contents: null };
+
+  },
+  onLoad: function onLoad(options) {
+    console.log('转移的summary', option.summary);
+    this.summary = options.summary;
 
   },
   methods: {
@@ -214,20 +220,25 @@ var _default =
       this.summary.splice(index + 1, 0, { name: "请添加标题", heading: "请添加摘要" });
     },
 
-    submitted: function submitted() {
+    submitted: function submitted() {var _this = this;
       var params = {
         "summary": this.summary };
 
       uni.request({
-        url: 'http://api.komavideo.com/news/list',
+        url: 'http://127.0.0.1:8000/display',
         method: 'POST',
         data: params,
-        success: function success(res) {},
-        fail: function fail(err) {} }),
+        success: function success(res) {
+          console.log(res.data);
+          _this.contents = res.data.display;
+        },
+        fail: function fail(err) {
+
+        } }),
 
 
       uni.navigateTo({
-        url: "../ppt/ppt" });
+        url: "../ppt/ppt?contents=" + this.contents });
 
 
     },
