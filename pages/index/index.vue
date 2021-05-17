@@ -25,8 +25,8 @@
 				</view>
 
 				<text>\n</text>
-				<button type="default" size="default" @tap="mylogin">登录</button>
 				<button type="default" size="default">打卡</button>
+				<button type="default" size="default" @click="getstore">商城</button>
 		        <button @click="closeDrawer" type="warn" size="default" class="button-position">关闭设置界面</button>
 		    </scroll-view>
 		</uni-drawer>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+	import helper from '../../common/helper.js'; 
 	export default {
 		data() {
 			return {
@@ -87,27 +88,10 @@
 			closeDrawer() {
 			    this.$refs.showLeft.close();
 			},
-			
-			mylogin(){
-				uni.login({
-				  provider: 'weixin',
-				  success: function (loginRes) {
-				    console.log('登录服务商提供的登录信息：' ,loginRes.authResult);
-					console.log('小程序专有，用户登录凭证：' ,loginRes.code);	//小程序专有，用户登录凭证。开发者需要在开发者服务器后台，使用 code 换取 openid 和 session_key 等信息
-					console.log('描述信息：' ,loginRes.errMsg);
-				    // 获取用户信息
-				    uni.getUserInfo({
-				      provider: 'weixin',
-				      success: function (infoRes) {
-				        console.log('用户昵称为：' ,  infoRes.userInfo.nickName);	//String 用户昵称
-						console.log('该服务商唯一用户标识：' ,infoRes.userInfo.openId);	//自用  String	该服务商唯一用户标识
-						console.log('用户头像：' ,infoRes.userInfo.avatarUrl);	//  String	用户头像
-						console.log('校验用户信息：' ,infoRes.signature);	//使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息。
-						//user    data
-				      }
-				    });
-				  }
-				});
+			getstore(){
+				uni.navigateTo({
+					url:"../store/store",
+				})
 			},
 			
 			appLoginWx() {
@@ -191,8 +175,10 @@
 						uni.hideLoading();
 					},
 				})
+				var login_url = helper.websiteUrl+'/login';
 				uni.request({
-				    url: 'http://127.0.0.1:8000/login', 
+				    //url: 'http://127.0.0.1:8000/login', 
+					url: login_url, 
 					method:'POST',
 				    data: {
 				        "appId": this.AppId,

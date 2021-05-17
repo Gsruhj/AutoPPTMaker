@@ -104,10 +104,10 @@ var components
 try {
   components = {
     uniNavBar: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue */ 63))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue */ 70))
     },
     uniDrawer: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-drawer/components/uni-drawer/uni-drawer */ "uni_modules/uni-drawer/components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-drawer/components/uni-drawer/uni-drawer.vue */ 70))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-drawer/components/uni-drawer/uni-drawer */ "uni_modules/uni-drawer/components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-drawer/components/uni-drawer/uni-drawer.vue */ 77))
     }
   }
 } catch (e) {
@@ -162,80 +162,81 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {
-      title: 'Hello',
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
-      code: "",
-      SessionKey: '',
-      encryptedData: "",
-      iv: "",
-      OpenId: '',
-      nickName: null,
-      gender: 0,
-      avatarUrl: null,
-      isCanUse: uni.getStorageSync('isCanUse'), //默认为true  记录当前用户是否是第一次授权使用的		
-
-      AppId: "wx1db000eae331347c",
-      AppSecret: "c0dcbf90e79af6ae929cb45194593d3d",
-      username: null };
 
 
-  },
-  onLoad: function onLoad() {
 
-    var _this = this;
-    uni.getSetting({
-      success: function success(res) {
-        console.log("授权：", res);
-        if (!res.authSetting['scope.userInfo']) {
-          //这里调用授权
-          console.log("当前未授权");
-        } else {
-          //用户已经授权过了
-          console.log("当前已授权");
-          _this.login();
-        }
-      } });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _helper = _interopRequireDefault(__webpack_require__(/*! ../../common/helper.js */ 29));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { title: 'Hello', code: "", SessionKey: '', encryptedData: "", iv: "", OpenId: '', nickName: null, gender: 0, avatarUrl: null, isCanUse: uni.getStorageSync('isCanUse'), //默认为true  记录当前用户是否是第一次授权使用的		
+      AppId: "wx1db000eae331347c", AppSecret: "c0dcbf90e79af6ae929cb45194593d3d", username: null };}, onLoad: function onLoad() {var _this = this;uni.getSetting({ success: function success(res) {console.log("授权：", res);if (!res.authSetting['scope.userInfo']) {//这里调用授权
+          console.log("当前未授权");} else {//用户已经授权过了
+          console.log("当前已授权");_this.login();}} });
 
   },
   methods: {
@@ -251,26 +252,9 @@ var _default =
     closeDrawer: function closeDrawer() {
       this.$refs.showLeft.close();
     },
-
-    mylogin: function mylogin() {
-      uni.login({
-        provider: 'weixin',
-        success: function success(loginRes) {
-          console.log('登录服务商提供的登录信息：', loginRes.authResult);
-          console.log('小程序专有，用户登录凭证：', loginRes.code); //小程序专有，用户登录凭证。开发者需要在开发者服务器后台，使用 code 换取 openid 和 session_key 等信息
-          console.log('描述信息：', loginRes.errMsg);
-          // 获取用户信息
-          uni.getUserInfo({
-            provider: 'weixin',
-            success: function success(infoRes) {
-              console.log('用户昵称为：', infoRes.userInfo.nickName); //String 用户昵称
-              console.log('该服务商唯一用户标识：', infoRes.userInfo.openId); //自用  String	该服务商唯一用户标识
-              console.log('用户头像：', infoRes.userInfo.avatarUrl); //  String	用户头像
-              console.log('校验用户信息：', infoRes.signature); //使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息。
-              //user    data
-            } });
-
-        } });
+    getstore: function getstore() {
+      uni.navigateTo({
+        url: "../store/store" });
 
     },
 
@@ -355,8 +339,10 @@ var _default =
           uni.hideLoading();
         } });
 
+      var login_url = _helper.default.websiteUrl + '/login';
       uni.request({
-        url: 'http://127.0.0.1:8000/login',
+        //url: 'http://127.0.0.1:8000/login', 
+        url: login_url,
         method: 'POST',
         data: {
           "appId": this.AppId,

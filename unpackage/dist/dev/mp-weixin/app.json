@@ -5,7 +5,8 @@
     "pages/refresh/refresh",
     "pages/download/download",
     "pages/modify/modify",
-    "pages/ppt/ppt"
+    "pages/ppt/ppt",
+    "pages/store/store"
   ],
   "subPackages": [],
   "window": {

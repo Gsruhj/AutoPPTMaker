@@ -83,6 +83,7 @@
 </template>
 
 <script>
+	import helper from '../../common/helper.js'; 
 	var sourceType = [
 		['camera'],
 		['album'],
@@ -201,8 +202,12 @@
 					"template_id":this.template_url,
 					"file_url":this.file_url,
 				};
+				//console.log('myRUL:',helper.websiteUrl);
+					
+				var information_url = helper.websiteUrl+'/information';
 				uni.request({
-					url: 'http://127.0.0.1:8000/information',
+					//url: 'http://127.0.0.1:8000/information',
+					url:information_url,
 					method: 'POST',
 					data: params,
 					success: (res)=>{
@@ -255,13 +260,16 @@
 			name=上传文件的key(选填，默认为file)
 			header=请求头(选填)
 			*/		
+		    
 			onUpload() { 
+				var upload_url = helper.websiteUrl+'/upload';
 				this.$refs.lFile.upload({
 					// #ifdef APP-PLUS
 					//currentWebview: this.$mp.page.$getAppWebview(),
 					// #endif
 					//非真实地址，记得更换
-					url: 'http://127.0.0.1:8000/upload',
+					//url: 'http://127.0.0.1:8000/upload',
+					url: upload_url,
 					//默认file,上传文件的key
 					name: 'file',
 					header: {'Content-Type': 'multipart/form-data'},

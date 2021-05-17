@@ -27,6 +27,7 @@
 </template>
 
 <script>
+	import helper from '../../common/helper.js'; 
 	export default {
 		data() {
 			return {
@@ -92,8 +93,10 @@
 				let params = {					
 					"summary":this.summary,
 				};
+				var display_url = helper.websiteUrl+'/display';
 				uni.request({
-					url: 'http://127.0.0.1:8000/display',
+					//url: 'http://127.0.0.1:8000/display',
+					url: display_url,
 					method: 'POST',
 					data: params,
 					success: (res)=>{

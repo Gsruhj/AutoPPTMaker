@@ -27,6 +27,7 @@
 </template>
 
 <script>
+	import helper from '../../common/helper.js'; 
 	export default {
 		data() {
 			return {
@@ -90,8 +91,10 @@
 				let params = {
 					"display":this.contents,
 				};
+				var getPPT_url = helper.websiteUrl+'/getPPT';
 				uni.request({
-					url: 'http://127.0.0.1:8000/getPPT',
+					//url: 'http://127.0.0.1:8000/getPPT',
+					url:getPPT_url,
 					method: 'POST',
 					data: params,
 					success: (res)=>{
