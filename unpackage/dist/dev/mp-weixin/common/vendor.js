@@ -4494,6 +4494,22 @@ function normalizeComponent (
 
 /***/ }),
 
+/***/ 18:
+/*!***********************************************!*\
+  !*** D:/GitHub/AutoPPTMaker/common/helper.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var websiteUrl = 'http://10.128.153.237:8000';
+//const websiteUrl = 'http://127.0.0.1:8000'; 
+var _default =
+{
+  websiteUrl: websiteUrl };exports.default = _default;
+
+/***/ }),
+
 /***/ 2:
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
@@ -10542,18 +10558,18 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 26:
+/***/ 27:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 27);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 28);
 
 /***/ }),
 
-/***/ 27:
+/***/ 28:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -10584,7 +10600,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 28);
+module.exports = __webpack_require__(/*! ./runtime */ 29);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -10601,7 +10617,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 28:
+/***/ 29:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -11330,21 +11346,6 @@ if (hadRuntime) {
   })() || Function("return this")()
 );
 
-
-/***/ }),
-
-/***/ 29:
-/*!***********************************************!*\
-  !*** D:/GitHub/AutoPPTMaker/common/helper.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var websiteUrl = 'http://10.128.153.237:8000';var _default =
-
-{
-  websiteUrl: websiteUrl };exports.default = _default;
 
 /***/ }),
 

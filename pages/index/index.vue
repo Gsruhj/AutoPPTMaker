@@ -107,14 +107,14 @@
 									_self.code = res.code;
 									uni.getUserInfo({
 										provider: 'weixin',
-										success: (info) => { //这里请求接口
+										success: (info) => { 	//这里请求接口
 											console.log(res);
 											console.log(info);
 											_self.login();
 										},
 										fail: () => {
 											uni.showToast({
-												title: "微信登录授权失败",
+												title: "微信登录授权失败-1",
 												icon: "none"
 											});
 										}
@@ -123,7 +123,7 @@
 								},
 								fail: () => {
 									uni.showToast({
-										title: "微信登录授权失败",
+										title: "微信登录授权失败-2",
 										icon: "none"
 									});
 								}
@@ -176,6 +176,7 @@
 					},
 				})
 				var login_url = helper.websiteUrl+'/login';
+				console.log('login_url',login_url);
 				uni.request({
 				    //url: 'http://127.0.0.1:8000/login', 
 					url: login_url, 
