@@ -51,8 +51,8 @@
 				avatarUrl: null,
 				isCanUse: uni.getStorageSync('isCanUse'), //默认为true  记录当前用户是否是第一次授权使用的		
 						
-				AppId:"wx1db000eae331347c",
-				AppSecret:"c0dcbf90e79af6ae929cb45194593d3d",
+				AppId:"******************",
+				AppSecret:"********************************",
 				username: null,
 				
 			}
